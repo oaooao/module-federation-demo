@@ -4,6 +4,7 @@
 		"build": "NODE_ENV=production webpack --config ./config/webpack.config.base.js"
 	},
 	"devDependencies": {
+		"@module-federation/fmr": "^0.0.7",
 		"@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
 		"@swc/core": "^1.2.222",
 		"@types/react": "^18.0.15",

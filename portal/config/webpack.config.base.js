@@ -9,6 +9,9 @@ const { ModuleFederationPlugin } = require('webpack').container;
 // @ts-ignore
 const ExternalTemplateRemotesPlugin = require('external-remotes-plugin');
 
+// 解决热更新在模块联邦下失效的问题
+const { MFLiveReloadPlugin } = require("@module-federation/fmr");
+
 const isDevelopment = process.env.NODE_ENV !== "production";
 
 module.exports = {
@@ -68,6 +71,11 @@ module.exports = {
     ],
   },
   plugins: [
+    isDevelopment && new MFLiveReloadPlugin({
+      port: 8080, // the port your app runs on
+      container: "portal", // the name of your app, must be unique
+      standalone: false, // false uses chrome extention
+    }),
     new ModuleFederationPlugin({
       name: "portal",
       remotes: {
