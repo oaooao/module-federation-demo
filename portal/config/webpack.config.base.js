@@ -1,7 +1,13 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+// @ts-ignore
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+// @ts-ignore
 const { ESBuildMinifyPlugin } = require("esbuild-loader");
+// @ts-ignore
+const { ModuleFederationPlugin } = require('webpack').container;
+// @ts-ignore
+const ExternalTemplateRemotesPlugin = require('external-remotes-plugin');
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 
@@ -27,7 +33,7 @@ module.exports = {
             jsc: {
               parser: {
                 syntax: "typescript",
-                "tsx": true
+                tsx: true,
               },
               transform: {
                 react: {
@@ -38,7 +44,7 @@ module.exports = {
                   refresh: isDevelopment,
                   // 源代码无需引入 React 即可使用 JSX 了
                   runtime: "automatic",
-                  "importSource": "@emotion/react"
+                  importSource: "@emotion/react",
                 },
               },
             },
@@ -62,6 +68,16 @@ module.exports = {
     ],
   },
   plugins: [
+    new ModuleFederationPlugin({
+      name: "portal",
+      remotes: {
+        qc: "qc@[qcUrl]/remoteEntry.js",
+        cdp: "qc@[cdpUrl]/remoteEntry.js",
+        businessComponents: "qc@[businessComponentsUrl]/remoteEntry.js",
+        libs: "libs@[libsUrl]/remoteEntry.js",
+      },
+    }),
+    new ExternalTemplateRemotesPlugin(),
     new HtmlWebpackPlugin({
       template: "./src/index.html",
     }),
@@ -75,9 +91,10 @@ module.exports = {
   },
   optimization: {
     minimizer: [
-      !isDevelopment && new ESBuildMinifyPlugin({
-        target: "es2015", // Syntax to compile to (see options below for possible values)
-      }),
+      !isDevelopment &&
+        new ESBuildMinifyPlugin({
+          target: "es2015", // Syntax to compile to (see options below for possible values)
+        }),
     ].filter(Boolean),
   },
 };

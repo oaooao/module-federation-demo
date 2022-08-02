@@ -8,6 +8,7 @@ specifiers:
   '@types/react-dom': ^18.0.6
   css-loader: ^6.7.1
   esbuild-loader: ^2.19.0
+  external-remotes-plugin: ^1.0.0
   html-webpack-plugin: ^5.5.0
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -31,6 +32,7 @@ devDependencies:
   '@types/react-dom': 18.0.6
   css-loader: 6.7.1_webpack@5.74.0
   esbuild-loader: 2.19.0_webpack@5.74.0
+  external-remotes-plugin: 1.0.0_webpack@5.74.0
   html-webpack-plugin: 5.5.0_webpack@5.74.0
   react-refresh: 0.14.0
   style-loader: 3.3.1_webpack@5.74.0
@@ -1643,6 +1645,15 @@ packages:
       vary: 1.1.2
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /external-remotes-plugin/1.0.0_webpack@5.74.0:
+    resolution: {integrity: sha512-19cfGfzmPMXkRNpyqOHgndNB07vjk1G1V7IuyixBw8Z1QTc/IOhINy9TbWzDRPTmj64e3STTI1MJE0gI58p7YA==}
+    peerDependencies:
+      webpack: ^5
+    dependencies:
+      webpack: 5.74.0_5ceiynysdpydx24xyafbrras4a
+      webpack-sources: 2.3.1
     dev: true
 
   /fast-deep-equal/3.1.3:
