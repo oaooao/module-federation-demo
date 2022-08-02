@@ -22,6 +22,12 @@ module.exports = {
               parser: {
                 syntax: "typescript",
               },
+              transform: {
+                react: {
+                  // 源代码无需引入 React 即可使用 JSX 了
+                  runtime: "automatic",
+                },
+              },
             },
           },
         },
