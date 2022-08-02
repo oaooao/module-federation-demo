@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const { ESBuildMinifyPlugin } = require("esbuild-loader");
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 
@@ -46,6 +47,13 @@ module.exports = {
         use: [
           "style-loader",
           "css-loader",
+          {
+            loader: "esbuild-loader",
+            options: {
+              loader: "css",
+              minify: true,
+            },
+          },
         ],
       },
     ],
@@ -61,5 +69,12 @@ module.exports = {
     hot: true,
     historyApiFallback: true,
     port: 8000,
+  },
+  optimization: {
+    minimizer: [
+      !isDevelopment && new ESBuildMinifyPlugin({
+        target: "es2015", // Syntax to compile to (see options below for possible values)
+      }),
+    ].filter(Boolean),
   },
 };
