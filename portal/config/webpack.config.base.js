@@ -37,6 +37,7 @@ module.exports = {
                   refresh: isDevelopment,
                   // 源代码无需引入 React 即可使用 JSX 了
                   runtime: "automatic",
+                  "importSource": "@emotion/react"
                 },
               },
             },

@@ -1,4 +1,13 @@
-export const A = () => {
-    return <div>hello world 456</div>;
-};
+import { css } from "@emotion/react";
 
+export const A = () => {
+  return (
+    <div
+      css={css`
+        color: blue;
+      `}
+    >
+      hello world 456
+    </div>
+  );
+};
