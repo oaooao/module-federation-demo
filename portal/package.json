@@ -1,6 +1,7 @@
 {
 	"scripts": {
-		"start": "webpack-dev-server --config ./config/webpack.config.base.js --mode development"
+		"start": "NODE_ENV=development webpack-dev-server --config ./config/webpack.config.base.js",
+		"build": "NODE_ENV=production webpack --config ./config/webpack.config.base.js"
 	},
 	"devDependencies": {
 		"@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
