@@ -1,4 +1,23 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import { useState } from 'react';
+import { createRoot } from 'react-dom/client';
+import { A } from "./components/a";
 
-ReactDOM.render(<h1>Hello World</h1>, document.getElementById("root"));
+const App = () => {
+  const [value, setValue] = useState("");
+
+  return (
+    <div>
+      <input
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        type="text"
+      />
+      <A />
+    </div>
+  );
+};
+
+const container = document.getElementById('root');
+const root = createRoot(container!);
+
+root.render(<App />);
