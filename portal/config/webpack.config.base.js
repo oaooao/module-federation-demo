@@ -12,6 +12,7 @@ module.exports = {
   mode: isDevelopment ? "development" : "production",
   entry: path.join(__dirname, "../src/index.tsx"),
   output: {
+    clean: true,
     path: path.join(__dirname, "../dist"),
     filename: "bundle.js",
   },
@@ -64,7 +65,7 @@ module.exports = {
     }),
     // isDevelopment && new webpack.HotModuleReplacementPlugin(),
     isDevelopment && new ReactRefreshWebpackPlugin(),
-  ],
+  ].filter(Boolean),
   devServer: {
     hot: true,
     historyApiFallback: true,
