@@ -1,23 +1,5 @@
-import { useState } from 'react';
-import { createRoot } from 'react-dom/client';
-import { A } from "./components/a";
+// Use dynamic import here to allow webpack to interface with module federation code
+window.qcUrl = 'http://localhost:8001';
+window.libsUrl = 'http://localhost:8002';
 
-const App = () => {
-  const [value, setValue] = useState("");
-
-  return (
-    <div>
-      <input
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        type="text"
-      />
-      <A />
-    </div>
-  );
-};
-
-const container = document.getElementById('root');
-const root = createRoot(container!);
-
-root.render(<App />);
+import('./bootstrap');

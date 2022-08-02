@@ -5,9 +5,9 @@ const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin"
 // @ts-ignore
 const { ESBuildMinifyPlugin } = require("esbuild-loader");
 // @ts-ignore
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require("webpack").container;
 // @ts-ignore
-const ExternalTemplateRemotesPlugin = require('external-remotes-plugin');
+const ExternalTemplateRemotesPlugin = require("external-remotes-plugin");
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 
@@ -69,11 +69,12 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "portal",
+      name: "qc",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./button": path.join(__dirname, "../src/components/button"),
+      },
       remotes: {
-        qc: "qc@[qcUrl]/remoteEntry.js",
-        cdp: "qc@[cdpUrl]/remoteEntry.js",
-        businessComponents: "qc@[businessComponentsUrl]/remoteEntry.js",
         libs: "libs@[libsUrl]/remoteEntry.js",
       },
     }),
@@ -87,7 +88,8 @@ module.exports = {
   devServer: {
     hot: true,
     historyApiFallback: true,
-    port: 8000,
+    port: 8001,
+    static: [path.join(__dirname, "../dist")],
   },
   optimization: {
     minimizer: [

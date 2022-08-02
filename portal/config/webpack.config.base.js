@@ -72,7 +72,7 @@ module.exports = {
       name: "portal",
       remotes: {
         qc: "qc@[qcUrl]/remoteEntry.js",
-        cdp: "qc@[cdpUrl]/remoteEntry.js",
+        cdp: "cdp@[cdpUrl]/remoteEntry.js",
         businessComponents: "qc@[businessComponentsUrl]/remoteEntry.js",
         libs: "libs@[libsUrl]/remoteEntry.js",
       },
@@ -88,6 +88,7 @@ module.exports = {
     hot: true,
     historyApiFallback: true,
     port: 8000,
+    static: [path.join(__dirname, "../dist")],
   },
   optimization: {
     minimizer: [
