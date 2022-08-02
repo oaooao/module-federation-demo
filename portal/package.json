@@ -1,4 +1,7 @@
 {
+	"scripts": {
+		"start": "webpack-dev-server --config ./config/webpack.config.base.js --mode development"
+	},
 	"devDependencies": {
 		"@swc/core": "^1.2.222",
 		"@types/react": "^18.0.15",
