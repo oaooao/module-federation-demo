@@ -1,7 +1,7 @@
 {
 	"scripts": {
-		"start": "NODE_ENV=development webpack-dev-server --config ./config/webpack.config.base.js",
-		"build": "NODE_ENV=production webpack --config ./config/webpack.config.base.js"
+		"start": "NODE_ENV=development webpack-dev-server --config ./config/webpack.config.js",
+		"build": "NODE_ENV=production webpack --config ./config/webpack.config.js"
 	},
 	"devDependencies": {
 		"@module-federation/fmr": "^0.0.7",
