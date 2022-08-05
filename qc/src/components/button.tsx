@@ -1,5 +1,5 @@
-export const Button = () => {
-  return (
-    <button>来自 QC 的 Button 1234</button>
-  );
+export const Button = (props: any) => {
+  const content = props.children || "来自 QC 的 Button";
+
+  return <button>{content}</button>;
 };

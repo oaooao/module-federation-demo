@@ -82,6 +82,7 @@ module.exports = {
       filename: "remoteEntry.js",
       exposes: {
         "./button": path.join(__dirname, "../src/components/button"),
+        "./router": path.join(__dirname, "../src/router"),
       },
       remotes: {
         libs: "libs@[libsUrl]/remoteEntry.js",
